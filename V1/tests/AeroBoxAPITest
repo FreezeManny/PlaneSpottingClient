@@ -1,0 +1,15 @@
+import requests
+
+def getAeroDataBoxAircraftInformationFromReg(apiKey, reg):
+    url = "https://aerodatabox.p.rapidapi.com/aircrafts/reg/" + reg
+    parameter = {
+        "withRegistrations":"false",
+        "withImage":"true"
+        }
+    headers = {
+	    "X-RapidAPI-Key": apiKey,
+	    "X-RapidAPI-Host": "aerodatabox.p.rapidapi.com"
+        }
+    return requests.request("GET", url, headers=headers, params=parameter).text
+
+print(getAeroDataBoxAircraftInformationFromReg("9088bd5e84msh7b34086494b2612p13a181jsncfb739d7aa9b", "D-AICH"))
